@@ -1,5 +1,13 @@
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import { 
+  View, 
+  Text,
+  StyleSheet,
+  TouchableHighlight,
+  TouchableNativeFeedback,
+  TouchableOpacity,
+  TouchableWithoutFeedback
+ } from 'react-native'
 import { getMetricMetaInfo } from '../utils/helpers'
 import UdaciSteppers from './UdaciSteppers'
 import UdaciSlider from './UdaciSlider'
@@ -12,6 +20,10 @@ export default class AddEntry extends Component {
     swim: 0,
     sleep: 0,
     eat: 0
+  }
+
+  handlePress = () => {
+    alert('Hello Anvita')
   }
 
   increment = (metric) => {
@@ -66,7 +78,36 @@ export default class AddEntry extends Component {
             </View>
           )
         })}
+        <View style={styles.container}>
+          <TouchableOpacity
+            style={styles.btn}
+            onPress={this.handlePress}>
+            <Text style={styles.btnText}>Click Me</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginLeft: 10,
+    marginRight: 10,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  btn: {
+    backgroundColor: '#E53224',
+    padding: 10,
+    paddingLeft: 50,
+    paddingRight: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5
+  },
+  btnText: {
+    color: '#fff'
+  }
+})
