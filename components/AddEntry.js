@@ -3,20 +3,26 @@ import {
   View, 
   Text,
   StyleSheet,
-  TouchableHighlight,
-  TouchableNativeFeedback,
   TouchableOpacity,
-  TouchableWithoutFeedback
  } from 'react-native'
-import { getMetricMetaInfo } from '../utils/helpers'
+import { getMetricMetaInfo, timeToString } from '../utils/helpers'
 import UdaciSteppers from './UdaciSteppers'
 import UdaciSlider from './UdaciSlider'
 import DateHeader from './DateHeader'
 
+function SubmitBtn({ onPress }) {
+  return(
+    <TouchableOpacity
+      onPress={onPress}>
+      <Text>SUBMIT</Text>
+    </TouchableOpacity>
+  )
+}
+
 export default class AddEntry extends Component {
   state = {
     run: 0,
-    bike: 0,
+    bike: 10,
     swim: 0,
     sleep: 0,
     eat: 0
@@ -53,6 +59,24 @@ export default class AddEntry extends Component {
     }))
   }
 
+  submit = () => {
+    const key = timeToString()
+    const entry = this.state
+    // Update Redux
+    this.setState(() => ({
+      run: 0,
+      bike: 0,
+      swim: 0,
+      sleep: 0,
+      eat: 0
+    }))
+    // Navigate to Home
+
+    // Save to DB
+
+    // Clear Local Notification
+  }
+
   render() {
     const metricInfo = getMetricMetaInfo()
     return(
@@ -78,36 +102,9 @@ export default class AddEntry extends Component {
             </View>
           )
         })}
-        <View style={styles.container}>
-          <TouchableOpacity
-            style={styles.btn}
-            onPress={this.handlePress}>
-            <Text style={styles.btnText}>Click Me</Text>
-          </TouchableOpacity>
-        </View>
+        <SubmitBtn 
+          onPress={this.submit}/>
       </View>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginLeft: 10,
-    marginRight: 10,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  btn: {
-    backgroundColor: '#E53224',
-    padding: 10,
-    paddingLeft: 50,
-    paddingRight: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 5
-  },
-  btnText: {
-    color: '#fff'
-  }
-})
