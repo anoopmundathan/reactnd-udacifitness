@@ -103,13 +103,12 @@ class AddEntry extends Component {
 
     if(this.props.alreadyLogged) {
       return(
-        <View>
+        <View style={styles.center}>
           <Ionicons
-            name='ios-happy-outline'
+            name={Platform.OS === 'ios' ? 'ios-happy-outline' : 'md-happy'}
             size={100} />
           <Text>You alreay logged your information for today</Text>
-          <TextButton
-            onPress={this.reset}>
+          <TextButton style={{padding: 10}}onPress={this.reset}>
             Reset
           </TextButton>
         </View>
@@ -149,7 +148,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: white
+    backgroundColor: white,
+    borderColor: purple  
   },
   row: {
     flexDirection: 'row'
@@ -176,6 +176,11 @@ const styles = StyleSheet.create({
   submitBtnText: {
     color: white,
     textAlign: 'center'
+  },
+  center: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 })
 
