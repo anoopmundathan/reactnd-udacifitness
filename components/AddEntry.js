@@ -116,13 +116,13 @@ class AddEntry extends Component {
       )
     }
     return(
-      <View>
+      <View style={styles.container}>
         <DateHeader date={(new Date()).toLocaleDateString()}/>
         {Object.keys(metricInfo).map((key) => {
           const { getIcon, type, ...rest } = metricInfo[key]
           const value = this.state[key]
           return (
-            <View key={key}>
+            <View key={key} style={styles.row}>
               {getIcon()}
               {type === 'slider'
                 ? <UdaciSlider 
@@ -146,6 +146,14 @@ class AddEntry extends Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: white
+  },
+  row: {
+    flexDirection: 'row'
+  },
   iosSubmitBtn: {
     backgroundColor: purple,
     padding: 10,
