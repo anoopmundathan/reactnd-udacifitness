@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { 
+  View, 
+  Text, 
+  StyleSheet, 
+  TouchableOpacity,
+  Platform
+ } from 'react-native'
 import { getMetricMetaInfo, timeToString, getDailyReminderValue } from '../utils/helpers'
 import UdaciSteppers from './UdaciSteppers'
 import UdaciSlider from './UdaciSlider'
@@ -9,12 +15,14 @@ import { submitEntry, removeEntry } from '../utils/api'
 import { Ionicons } from '@expo/vector-icons'
 import { connect } from 'react-redux'
 import { addEntry } from '../actions'
+import { white, purple } from '../utils/colors'
 
 function SubmitBtn({ onPress }) {
   return(
     <TouchableOpacity
+      style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmitBtn }
       onPress={onPress}>
-      <Text>SUBMIT</Text>
+      <Text style={styles.submitBtnText}>SUBMIT</Text>
     </TouchableOpacity>
   )
 }
@@ -136,6 +144,32 @@ class AddEntry extends Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  iosSubmitBtn: {
+    backgroundColor: purple,
+    padding: 10,
+    borderRadius: 7,
+    height: 45,
+    marginLeft: 40,
+    marginRight: 40
+  },
+  androidSubmitBtn: {
+    backgroundColor: purple,
+    padding: 10,
+    paddingLeft: 30,
+    paddingRight: 30,
+    height: 45,
+    borderRadius: 2,
+    alignSelf: 'flex-end',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  submitBtnText: {
+    color: white,
+    textAlign: 'center'
+  }
+})
 
 function mapStateToProps(state) {
   const key = timeToString()
