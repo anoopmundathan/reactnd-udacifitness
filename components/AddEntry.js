@@ -149,7 +149,8 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     backgroundColor: white,
-    borderColor: purple  
+    borderColor: purple,
+    marginLeft: 10
   },
   row: {
     flexDirection: 'row'
