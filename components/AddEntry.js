@@ -148,12 +148,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: white,
-    borderColor: purple,
-    marginLeft: 10
+    backgroundColor: white
   },
   row: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    flex: 1,
+    alignItems: 'center'
   },
   iosSubmitBtn: {
     backgroundColor: purple,
@@ -176,13 +176,16 @@ const styles = StyleSheet.create({
   },
   submitBtnText: {
     color: white,
+    fontSize: 22,
     textAlign: 'center'
   },
   center: {
     flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
-    justifyContent: 'center'
-  }
+    marginLeft: 30,
+    marginRight: 30,
+  },
 })
 
 function mapStateToProps(state) {
