@@ -3,7 +3,6 @@ import { View, StyleSheet } from 'react-native'
 import { FontAwesome, MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons'
 import { white, black, red, orange, blue, lightPurp, pink } from './colors'
 
-
 const styles = StyleSheet.create({
   iconContainer: {
     padding: 5,
@@ -157,7 +156,7 @@ export function timeToString (time = Date.now()) {
 
 export function getDailyReminderValue() {
   return {
-    today: 'Dont  forget to log your data today'
+    today: '🙌 Dont  forget to log your data today'
   }
 }
 
